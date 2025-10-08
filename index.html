@@ -119,7 +119,6 @@
                 <h2>100 Donas</h2>
                 <select onchange="updatePrice(this, 100)">
                     <option value="6">Azúcar ($600)</option>
-                    <option value="8">Chocolate ($800)</option>
                     <option value="6">Rellena ($600)</option>
                 </select>
                 <div class="price">$600</div>
@@ -130,7 +129,6 @@
                 <h2>150 Donas</h2>
                 <select onchange="updatePrice(this, 150)">
                     <option value="6">Azúcar ($900)</option>
-                    <option value="8">Chocolate ($1200)</option>
                     <option value="6">Rellena ($900)</option>
                 </select>
                 <div class="price">$900</div>
@@ -141,7 +139,6 @@
                 <h2>200 Donas</h2>
                 <select onchange="updatePrice(this, 200)">
                     <option value="6">Azúcar ($1200)</option>
-                    <option value="8">Chocolate ($1600)</option>
                     <option value="6">Rellena ($1200)</option>
                 </select>
                 <div class="price">$1200</div>
@@ -152,7 +149,6 @@
                 <h2>250 Donas</h2>
                 <select onchange="updatePrice(this, 250)">
                     <option value="6">Azúcar ($1500)</option>
-                    <option value="8">Chocolate ($2000)</option>
                     <option value="6">Rellena ($1500)</option>
                 </select>
                 <div class="price">$1500</div>
@@ -163,7 +159,6 @@
                 <h2>300 Donas</h2>
                 <select onchange="updatePrice(this, 300)">
                     <option value="6">Azúcar ($1800)</option>
-                    <option value="8">Chocolate ($2400)</option>
                     <option value="6">Rellena ($1800)</option>
                 </select>
                 <div class="price">$1800</div>
@@ -184,7 +179,6 @@
             <select id="typeSelect" required>
                 <option value="">Tipo de dona</option>
                 <option value="Azúcar">Azúcar</option>
-                <option value="Chocolate">Chocolate</option>
                 <option value="Rellena">Rellena</option>
             </select><br>
             <button type="submit">Enviar por WhatsApp</button>
@@ -209,7 +203,7 @@
             const packageQty = document.getElementById('packageSelect').value;
             const type = document.getElementById('typeSelect').value;
 
-            let unitPrice = (type === "Chocolate") ? 8 : 6;
+            let unitPrice = (type === "Rellena") ? 6 : 6;
             let total = unitPrice * parseInt(packageQty);
 
             const message = `¡Hola! Quiero pedir ${packageQty} donas de tipo ${type}. Total: $${total}. Nombre: ${name}`;
@@ -220,3 +214,4 @@
     </script>
 </body>
 </html>
+
