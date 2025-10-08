@@ -1,0 +1,105 @@
+import React, { useState } from "react";
+
+export default function DonasLanding() {
+  const [order, setOrder] = useState({
+    nombre: "",
+    telefono: "",
+    direccion: "Monterrey, NL",
+    paquete: "100",
+    variedades: ["Surtidas"],
+    fecha: "",
+    hora: "",
+    comentarios: "",
+  });
+
+  function toggleVariedad(v) {
+    setOrder((o) => {
+      const has = o.variedades.includes(v);
+      return {
+        ...o,
+        variedades: has ? o.variedades.filter(x => x !== v) : [...o.variedades, v]
+      };
+    });
+  }
+
+  const whatsappNumber = "5218113508150";
+  const whatsappMessage = encodeURIComponent(
+    `Hola, quiero ordenar el paquete de ${order.paquete} donas (variedades: ${order.variedades.join(", ")}).\nNombre: ${order.nombre}\nTel: ${order.telefono}\nDirección: ${order.direccion}\nFecha/Hora: ${order.fecha} ${order.hora}\nComentarios: ${order.comentarios}`
+  );
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-pink-100 font-sans">
+      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-2xl font-bold text-pink-600">D</div>
+          <div>
+            <h1 className="text-2xl font-extrabold text-pink-700">Donas el huero</h1>
+            <p className="text-sm text-gray-600">Donas artesanales por pedido · Entrega en Monterrey</p>
+          </div>
+        </div>
+        <nav className="hidden md:flex gap-6 items-center">
+          <a href="#paquetes" className="text-pink-600 font-medium">Paquetes</a>
+          <a href="#galeria" className="text-pink-600 font-medium">Galería</a>
+          <a href="#ordenar" className="bg-pink-600 text-white px-4 py-2 rounded-lg shadow">Ordenar</a>
+        </nav>
+      </header>
+
+      <main className="max-w-6xl mx-auto p-6">
+        <section className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-2xl p-8 shadow-xl">
+          <div>
+            <h2 className="text-4xl font-extrabold text-pink-700 leading-tight">Donas recien hechas y a pedido</h2>
+            <p className="mt-4 text-gray-700">Personaliza tu paquete con variedades surtidas: chocolate, rellenas, o pura azucar Ideal para eventos, oficinas y reuniones en Monterrey.</p>
+
+            <div className="mt-6 flex gap-4">
+              <a href="#paquetes" className="bg-pink-600 text-white px-5 py-3 rounded-lg font-semibold shadow">Ver paquetes</a>
+              <a href={whatsappLink} className="border border-pink-600 text-pink-600 px-5 py-3 rounded-lg font-semibold">Ordenar por WhatsApp</a>
+            </div>
+
+            <ul className="mt-6 grid grid-cols-3 gap-3 text-center">
+              <li className="bg-pink-50 rounded-lg p-3">Entrega en Monterrey</li>
+              <li className="bg-pink-50 rounded-lg p-3">Pedidos mínimo 24 hrs</li>
+              <li className="bg-pink-50 rounded-lg p-3">Promociones de mayoreo</li>
+            </ul>
+          </div>
+
+          <div className="flex justify-center">
+            <img src="https://images.unsplash.com/photo-1589923188900-16c36f9f3caa?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Donas coloridas" className="w-full max-w-md rounded-2xl shadow-2xl" />
+          </div>
+        </section>
+
+        <section id="paquetes" className="mt-12">
+          <h3 className="text-3xl font-bold text-pink-700">Promociones y Mayoreo</h3>
+          <p className="text-gray-600 mt-2">Precios irresistibles con descuento especial para mayoreo o eventos grandes.</p>
+
+          <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-3">
+            {[
+              {title: 'Paquete Popular', donuts: 100, regular: 720, promo: 600},
+              {title: 'Paquete Grande', donuts: 150, regular: 1200, promo: 900},
+              {title: 'Paquete Popular de chocotale', donuts: 100, regular: 920, promo: 800},
+              {title: 'Paquete Grande de chocolate', donuts: 150, regular: 1450, promo: 1200},
+            ].map(pkg => (
+              <article key={pkg.donuts} className="bg-white rounded-xl p-6 shadow hover:scale-105 transform transition">
+                <div className="text-sm font-semibold text-pink-600">{pkg.title}</div>
+                <h4 className="text-2xl font-bold mt-2">{pkg.donuts} donas surtidas</h4>
+                <p className="mt-3 text-gray-600">Ideal para eventos y reventa con variedad de glaseados y rellenos.</p>
+                <div className="mt-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-sm text-gray-500">Precio regular</div>
+                    <div className="text-xl font-extrabold text-pink-700 line-through">${pkg.regular}</div>
+                    <div className="text-sm text-green-600 font-semibold">Promo Mayoreo: ${pkg.promo} <span className="bg-yellow-300 text-yellow-900 px-2 py-1 rounded ml-2">¡Oferta limitada!</span></div>
+                  </div>
+                  <a href="#ordenar" className="px-4 py-2 bg-pink-600 text-white rounded-lg">Ordenar</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <footer className="mt-12 text-center text-gray-600">
+          <p className="font-medium">Operamos en Monterrey, Nuevo León — Entregas locales y a zonas cercanas.</p>
+        </footer>
+      </main>
+    </div>
+  );
+}
