@@ -10,11 +10,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #fff0f5;
+            background: #fff8f0;
             color: #333;
         }
         header {
-            background: #ff69b4;
+            background: #ff5c8d;
             color: white;
             text-align: center;
             padding: 50px 20px;
@@ -36,57 +36,70 @@
         .package {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             padding: 20px;
             width: 250px;
             text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         .package img {
             width: 100%;
             border-radius: 15px;
+            margin-bottom: 10px;
         }
         .package h2 {
             margin: 10px 0;
         }
         .package select {
-            width: 80%;
+            width: 90%;
             padding: 5px;
             margin: 10px 0;
             font-size: 1em;
-        }
-        .price {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #ff1493;
-        }
-        form {
-            background: #fff0f5;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        form input, form select {
-            padding: 10px;
-            margin: 10px;
-            width: 200px;
             border-radius: 8px;
             border: 1px solid #ccc;
         }
+        .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #ff2e63;
+        }
+        form {
+            background: #fff0f5;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form input, form select {
+            padding: 12px;
+            margin: 10px;
+            width: 220px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
         form button {
-            background: #ff69b4;
+            background: #ff5c8d;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 1em;
+            transition: background 0.2s;
+        }
+        form button:hover {
+            background: #ff2e63;
         }
         footer {
             text-align: center;
             padding: 20px;
-            background: #ff69b4;
+            background: #ff5c8d;
             color: white;
             margin-top: 40px;
         }
@@ -100,59 +113,58 @@
     <div class="container">
         <h1 style="text-align:center;">Paquetes de Donas</h1>
         <div class="packages">
-            <!-- Paquete -->
+            <!-- Paquete 100 -->
             <div class="package">
-                <img src="https://images.unsplash.com/photo-1605475129366-3f2ab46b9b2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI4ODh8MHwxfGFsbHwxfHxkb25hdHxlbnwwfHx8fDE2OTcyNjcwMjI&ixlib=rb-4.0.3&q=80&w=400" alt="Donas">
+                <img src="https://images.unsplash.com/photo-1605475129366-3f2ab46b9b2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Donas">
                 <h2>100 Donas</h2>
                 <select onchange="updatePrice(this, 100)">
-                    <option value="6">Azúcar ($6 c/u)</option>
-                    <option value="8">Chocolate ($8 c/u)</option>
-                    <option value="6">Rellena ($6 c/u)</option>
-                    <option value="6">Glaseada de Chocolate ($6 c/u)</option>
+                    <option value="6">Azúcar ($600)</option>
+                    <option value="8">Chocolate ($800)</option>
+                    <option value="6">Rellena ($600)</option>
                 </select>
                 <div class="price">$600</div>
             </div>
+            <!-- Paquete 150 -->
             <div class="package">
                 <img src="https://images.unsplash.com/photo-1616628184837-993276e1b877?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Donas">
                 <h2>150 Donas</h2>
                 <select onchange="updatePrice(this, 150)">
-                    <option value="6">Azúcar ($6 c/u)</option>
-                    <option value="8">Chocolate ($8 c/u)</option>
-                    <option value="6">Rellena ($6 c/u)</option>
-                    <option value="6">Glaseada de Chocolate ($6 c/u)</option>
+                    <option value="6">Azúcar ($900)</option>
+                    <option value="8">Chocolate ($1200)</option>
+                    <option value="6">Rellena ($900)</option>
                 </select>
                 <div class="price">$900</div>
             </div>
+            <!-- Paquete 200 -->
             <div class="package">
                 <img src="https://images.unsplash.com/photo-1604754742620-2ec0803c5833?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Donas">
                 <h2>200 Donas</h2>
                 <select onchange="updatePrice(this, 200)">
-                    <option value="6">Azúcar ($6 c/u)</option>
-                    <option value="8">Chocolate ($8 c/u)</option>
-                    <option value="6">Rellena ($6 c/u)</option>
-                    <option value="6">Glaseada de Chocolate ($6 c/u)</option>
+                    <option value="6">Azúcar ($1200)</option>
+                    <option value="8">Chocolate ($1600)</option>
+                    <option value="6">Rellena ($1200)</option>
                 </select>
                 <div class="price">$1200</div>
             </div>
+            <!-- Paquete 250 -->
             <div class="package">
                 <img src="https://images.unsplash.com/photo-1621609769297-8d86b1c2e0db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Donas">
                 <h2>250 Donas</h2>
                 <select onchange="updatePrice(this, 250)">
-                    <option value="6">Azúcar ($6 c/u)</option>
-                    <option value="8">Chocolate ($8 c/u)</option>
-                    <option value="6">Rellena ($6 c/u)</option>
-                    <option value="6">Glaseada de Chocolate ($6 c/u)</option>
+                    <option value="6">Azúcar ($1500)</option>
+                    <option value="8">Chocolate ($2000)</option>
+                    <option value="6">Rellena ($1500)</option>
                 </select>
                 <div class="price">$1500</div>
             </div>
+            <!-- Paquete 300 -->
             <div class="package">
                 <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Donas">
                 <h2>300 Donas</h2>
                 <select onchange="updatePrice(this, 300)">
-                    <option value="6">Azúcar ($6 c/u)</option>
-                    <option value="8">Chocolate ($8 c/u)</option>
-                    <option value="6">Rellena ($6 c/u)</option>
-                    <option value="6">Glaseada de Chocolate ($6 c/u)</option>
+                    <option value="6">Azúcar ($1800)</option>
+                    <option value="8">Chocolate ($2400)</option>
+                    <option value="6">Rellena ($1800)</option>
                 </select>
                 <div class="price">$1800</div>
             </div>
@@ -175,7 +187,6 @@
                 <option value="Azúcar">Azúcar</option>
                 <option value="Chocolate">Chocolate</option>
                 <option value="Rellena">Rellena</option>
-                <option value="Glaseada de Chocolate">Glaseada de Chocolate</option>
             </select><br>
             <button type="submit">Enviar por WhatsApp</button>
         </form>
@@ -188,8 +199,9 @@
     <script>
         function updatePrice(select, quantity) {
             const pricePerUnit = parseInt(select.value);
+            const totalPrice = pricePerUnit * quantity;
             const priceDiv = select.nextElementSibling;
-            priceDiv.textContent = "$" + (pricePerUnit * quantity);
+            priceDiv.textContent = "$" + totalPrice;
         }
 
         document.getElementById('orderForm').addEventListener('submit', function(e){
