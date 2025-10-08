@@ -120,6 +120,7 @@
                 <select onchange="updatePrice(this, 100)">
                     <option value="6">Azúcar ($600)</option>
                     <option value="6">Rellena ($600)</option>
+                    <option value="8">Chocolate ($800)</option>
                 </select>
                 <div class="price">$600</div>
             </div>
@@ -130,6 +131,7 @@
                 <select onchange="updatePrice(this, 150)">
                     <option value="6">Azúcar ($900)</option>
                     <option value="6">Rellena ($900)</option>
+                    <option value="8">Chocolate ($1200)</option>
                 </select>
                 <div class="price">$900</div>
             </div>
@@ -140,6 +142,7 @@
                 <select onchange="updatePrice(this, 200)">
                     <option value="6">Azúcar ($1200)</option>
                     <option value="6">Rellena ($1200)</option>
+                    <option value="8">Chocolate ($1600)</option>
                 </select>
                 <div class="price">$1200</div>
             </div>
@@ -150,6 +153,7 @@
                 <select onchange="updatePrice(this, 250)">
                     <option value="6">Azúcar ($1500)</option>
                     <option value="6">Rellena ($1500)</option>
+                    <option value="8">Chocolate ($2000)</option>
                 </select>
                 <div class="price">$1500</div>
             </div>
@@ -160,6 +164,7 @@
                 <select onchange="updatePrice(this, 300)">
                     <option value="6">Azúcar ($1800)</option>
                     <option value="6">Rellena ($1800)</option>
+                    <option value="8">Chocolate ($2400)</option>
                 </select>
                 <div class="price">$1800</div>
             </div>
@@ -180,6 +185,7 @@
                 <option value="">Tipo de dona</option>
                 <option value="Azúcar">Azúcar</option>
                 <option value="Rellena">Rellena</option>
+                <option value="Chocolate">Chocolate</option>
             </select><br>
             <button type="submit">Enviar por WhatsApp</button>
         </form>
@@ -203,15 +209,15 @@
             const packageQty = document.getElementById('packageSelect').value;
             const type = document.getElementById('typeSelect').value;
 
-            let unitPrice = (type === "Rellena") ? 6 : 6;
+            let unitPrice = (type === "Chocolate") ? 8 : 6;
             let total = unitPrice * parseInt(packageQty);
 
             const message = `¡Hola! Quiero pedir ${packageQty} donas de tipo ${type}. Total: $${total}. Nombre: ${name}`;
-            // Número de WhatsApp fijo para recibir pedidos
             const whatsappUrl = `https://wa.me/528113508150?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
 </html>
+
 
