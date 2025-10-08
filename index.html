@@ -173,7 +173,6 @@
         <form id="orderForm">
             <h2>Realiza tu pedido por WhatsApp</h2>
             <input type="text" id="name" placeholder="Nombre" required><br>
-            <input type="tel" id="phone" placeholder="Número de WhatsApp" required><br>
             <select id="packageSelect" required>
                 <option value="">Selecciona paquete</option>
                 <option value="100">100 Donas</option>
@@ -207,7 +206,6 @@
         document.getElementById('orderForm').addEventListener('submit', function(e){
             e.preventDefault();
             const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
             const packageQty = document.getElementById('packageSelect').value;
             const type = document.getElementById('typeSelect').value;
 
@@ -215,7 +213,8 @@
             let total = unitPrice * parseInt(packageQty);
 
             const message = `¡Hola! Quiero pedir ${packageQty} donas de tipo ${type}. Total: $${total}. Nombre: ${name}`;
-            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            // Número de WhatsApp fijo para recibir pedidos
+            const whatsappUrl = `https://wa.me/528113508150?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     </script>
