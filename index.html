@@ -1,105 +1,243 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donas El Güero - Donas Recién Hechas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      color: #333;
+    }
+    header {
+      background-color: #fff;
+      padding: 25px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      color: #d62828;
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+    header p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+    .card h2 {
+      color: #d62828;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin-bottom: 15px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    .options label {
+      background-color: #f1f1f1;
+      padding: 8px 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .options input[type="radio"] {
+      display: none;
+    }
+    .options input[type="radio"]:checked + label {
+      background-color: #d62828;
+      color: #fff;
+    }
+    button {
+      background-color: #d62828;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #9d2222;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      background-color: #fff;
+      margin-top: 50px;
+      box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    }
+    .order-summary {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff3f3;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+      color: #d62828;
+    }
+  </style>
+</head>
+<body>
 
-export default function DonasLanding() {
-  const [order, setOrder] = useState({
-    nombre: "",
-    telefono: "",
-    direccion: "Monterrey, NL",
-    paquete: "100",
-    variedades: ["Surtidas"],
-    fecha: "",
-    hora: "",
-    comentarios: "",
-  });
+  <header>
+    <h1>Donas El Güero</h1>
+    <p>¡Donas recién hechas, deliciosas y listas por pedido en Monterrey!</p>
+  </header>
 
-  function toggleVariedad(v) {
-    setOrder((o) => {
-      const has = o.variedades.includes(v);
-      return {
-        ...o,
-        variedades: has ? o.variedades.filter(x => x !== v) : [...o.variedades, v]
-      };
-    });
-  }
+  <div class="container">
+    <div class="packages">
 
-  const whatsappNumber = "5218113508150";
-  const whatsappMessage = encodeURIComponent(
-    `Hola, quiero ordenar el paquete de ${order.paquete} donas (variedades: ${order.variedades.join(", ")}).\nNombre: ${order.nombre}\nTel: ${order.telefono}\nDirección: ${order.direccion}\nFecha/Hora: ${order.fecha} ${order.hora}\nComentarios: ${order.comentarios}`
-  );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+      <!-- Paquete Card -->
+      <div class="card">
+        <h2>100 Donas</h2>
+        <p>Precio por tipo</p>
+        <div class="options">
+          <input type="radio" id="azucar100" name="tipo100" value="Pura azúcar">
+          <label for="azucar100">Pura azúcar $6 c/u</label>
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-pink-100 font-sans">
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-2xl font-bold text-pink-600">D</div>
-          <div>
-            <h1 className="text-2xl font-extrabold text-pink-700">Donas el huero</h1>
-            <p className="text-sm text-gray-600">Donas artesanales por pedido · Entrega en Monterrey</p>
-          </div>
+          <input type="radio" id="chocolate100" name="tipo100" value="Chocolate">
+          <label for="chocolate100">Chocolate $8 c/u</label>
+
+          <input type="radio" id="rellenas100" name="tipo100" value="Rellenas">
+          <label for="rellenas100">Rellenas $6 c/u</label>
         </div>
-        <nav className="hidden md:flex gap-6 items-center">
-          <a href="#paquetes" className="text-pink-600 font-medium">Paquetes</a>
-          <a href="#galeria" className="text-pink-600 font-medium">Galería</a>
-          <a href="#ordenar" className="bg-pink-600 text-white px-4 py-2 rounded-lg shadow">Ordenar</a>
-        </nav>
-      </header>
+        <button onclick="addToOrder(100, '100 donas')">Agregar al pedido</button>
+      </div>
 
-      <main className="max-w-6xl mx-auto p-6">
-        <section className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-2xl p-8 shadow-xl">
-          <div>
-            <h2 className="text-4xl font-extrabold text-pink-700 leading-tight">Donas recien hechas y a pedido</h2>
-            <p className="mt-4 text-gray-700">Personaliza tu paquete con variedades surtidas: chocolate, rellenas, o pura azucar Ideal para eventos, oficinas y reuniones en Monterrey.</p>
+      <div class="card">
+        <h2>150 Donas</h2>
+        <p>Precio por tipo</p>
+        <div class="options">
+          <input type="radio" id="azucar150" name="tipo150" value="Pura azúcar">
+          <label for="azucar150">Pura azúcar $6 c/u</label>
 
-            <div className="mt-6 flex gap-4">
-              <a href="#paquetes" className="bg-pink-600 text-white px-5 py-3 rounded-lg font-semibold shadow">Ver paquetes</a>
-              <a href={whatsappLink} className="border border-pink-600 text-pink-600 px-5 py-3 rounded-lg font-semibold">Ordenar por WhatsApp</a>
-            </div>
+          <input type="radio" id="chocolate150" name="tipo150" value="Chocolate">
+          <label for="chocolate150">Chocolate $8 c/u</label>
 
-            <ul className="mt-6 grid grid-cols-3 gap-3 text-center">
-              <li className="bg-pink-50 rounded-lg p-3">Entrega en Monterrey</li>
-              <li className="bg-pink-50 rounded-lg p-3">Pedidos mínimo 24 hrs</li>
-              <li className="bg-pink-50 rounded-lg p-3">Promociones de mayoreo</li>
-            </ul>
-          </div>
+          <input type="radio" id="rellenas150" name="tipo150" value="Rellenas">
+          <label for="rellenas150">Rellenas $6 c/u</label>
+        </div>
+        <button onclick="addToOrder(150, '150 donas')">Agregar al pedido</button>
+      </div>
 
-          <div className="flex justify-center">
-            <img src="https://images.unsplash.com/photo-1589923188900-16c36f9f3caa?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Donas coloridas" className="w-full max-w-md rounded-2xl shadow-2xl" />
-          </div>
-        </section>
+      <div class="card">
+        <h2>200 Donas</h2>
+        <p>Precio por tipo</p>
+        <div class="options">
+          <input type="radio" id="azucar200" name="tipo200" value="Pura azúcar">
+          <label for="azucar200">Pura azúcar $6 c/u</label>
 
-        <section id="paquetes" className="mt-12">
-          <h3 className="text-3xl font-bold text-pink-700">Promociones y Mayoreo</h3>
-          <p className="text-gray-600 mt-2">Precios irresistibles con descuento especial para mayoreo o eventos grandes.</p>
+          <input type="radio" id="chocolate200" name="tipo200" value="Chocolate">
+          <label for="chocolate200">Chocolate $8 c/u</label>
 
-          <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-3">
-            {[
-              {title: 'Paquete Popular', donuts: 100, regular: 720, promo: 600},
-              {title: 'Paquete Grande', donuts: 150, regular: 1200, promo: 900},
-              {title: 'Paquete Popular de chocotale', donuts: 100, regular: 920, promo: 800},
-              {title: 'Paquete Grande de chocolate', donuts: 150, regular: 1450, promo: 1200},
-            ].map(pkg => (
-              <article key={pkg.donuts} className="bg-white rounded-xl p-6 shadow hover:scale-105 transform transition">
-                <div className="text-sm font-semibold text-pink-600">{pkg.title}</div>
-                <h4 className="text-2xl font-bold mt-2">{pkg.donuts} donas surtidas</h4>
-                <p className="mt-3 text-gray-600">Ideal para eventos y reventa con variedad de glaseados y rellenos.</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-gray-500">Precio regular</div>
-                    <div className="text-xl font-extrabold text-pink-700 line-through">${pkg.regular}</div>
-                    <div className="text-sm text-green-600 font-semibold">Promo Mayoreo: ${pkg.promo} <span className="bg-yellow-300 text-yellow-900 px-2 py-1 rounded ml-2">¡Oferta limitada!</span></div>
-                  </div>
-                  <a href="#ordenar" className="px-4 py-2 bg-pink-600 text-white rounded-lg">Ordenar</a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+          <input type="radio" id="rellenas200" name="tipo200" value="Rellenas">
+          <label for="rellenas200">Rellenas $6 c/u</label>
+        </div>
+        <button onclick="addToOrder(200, '200 donas')">Agregar al pedido</button>
+      </div>
 
-        <footer className="mt-12 text-center text-gray-600">
-          <p className="font-medium">Operamos en Monterrey, Nuevo León — Entregas locales y a zonas cercanas.</p>
-        </footer>
-      </main>
+      <div class="card">
+        <h2>250 Donas</h2>
+        <p>Precio por tipo</p>
+        <div class="options">
+          <input type="radio" id="azucar250" name="tipo250" value="Pura azúcar">
+          <label for="azucar250">Pura azúcar $6 c/u</label>
+
+          <input type="radio" id="chocolate250" name="tipo250" value="Chocolate">
+          <label for="chocolate250">Chocolate $8 c/u</label>
+
+          <input type="radio" id="rellenas250" name="tipo250" value="Rellenas">
+          <label for="rellenas250">Rellenas $6 c/u</label>
+        </div>
+        <button onclick="addToOrder(250, '250 donas')">Agregar al pedido</button>
+      </div>
+
+      <div class="card">
+        <h2>300 Donas</h2>
+        <p>Precio por tipo</p>
+        <div class="options">
+          <input type="radio" id="azucar300" name="tipo300" value="Pura azúcar">
+          <label for="azucar300">Pura azúcar $6 c/u</label>
+
+          <input type="radio" id="chocolate300" name="tipo300" value="Chocolate">
+          <label for="chocolate300">Chocolate $8 c/u</label>
+
+          <input type="radio" id="rellenas300" name="tipo300" value="Rellenas">
+          <label for="rellenas300">Rellenas $6 c/u</label>
+        </div>
+        <button onclick="addToOrder(300, '300 donas')">Agregar al pedido</button>
+      </div>
+
     </div>
-  );
-}
+
+    <div class="order-summary" id="orderSummary">
+      No has agregado ningún paquete aún.
+    </div>
+
+  </div>
+
+  <footer>
+    <p>📍 Venta por pedido únicamente en Monterrey | Contacto: +52 81 1234 5678</p>
+    <p>© 2025 Donas El Güero</p>
+  </footer>
+
+  <script>
+    function addToOrder(quantity, name) {
+      const orderDiv = document.getElementById('orderSummary');
+      let selectedOption = document.querySelector(`input[name="tipo${quantity}"]:checked`);
+      if (!selectedOption) {
+        alert('Por favor selecciona un tipo de dona');
+        return;
+      }
+
+      let pricePerDona = (selectedOption.value === "Chocolate") ? 8 : 6;
+      let total = quantity * pricePerDona;
+
+      orderDiv.innerHTML = `Has agregado: ${name} - ${selectedOption.value} <br> Total: $${total} MXN`;
+    }
+  </script>
+
+</body>
+</html>
+
